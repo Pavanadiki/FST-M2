@@ -1,0 +1,21 @@
+version: '3'
+services:
+  postgres:
+    image: "postgres"
+    environment:
+      - POSTGRES_PASSWORD=postgres_password
+      - POSTGRES_DB=simple_blog_api
+
+  blog-api:
+    image: devimounika/simple-blog-api
+    build:
+       context: ./
+       dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_PASSWORD=postgres_password
+      - POSTGRES_DB=simple_blog_api
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432

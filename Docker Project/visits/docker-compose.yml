@@ -1,0 +1,9 @@
+version: '3' 
+services:
+    redis-db:
+        image: 'redis'
+    node-app:
+        image: devimounika/visits
+        build: ./
+        ports:
+            - "8081:8081"
